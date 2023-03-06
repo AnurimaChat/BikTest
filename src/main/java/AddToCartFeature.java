@@ -10,7 +10,8 @@ public class AddToCartFeature {
         System.setProperty ("webdriver.chrome.driver",".\\chromedriver.exe" );
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         LoginPage login = new LoginPage(driver);
-        Catalog catalog = login.userLogin("standard_user","secret_sauce");
+        login.userLogin("standard_user","secret_sauce");
+        Catalog catalog = new Catalog(driver);
         //Verify Number of Items in Cart is equal to total items selected on page
         catalog.addProductToCart();
         Assert.assertEquals("6",catalog.getCartItemCount(),"Number of Items in Cart does not match to items selected");

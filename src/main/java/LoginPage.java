@@ -7,16 +7,25 @@ public class LoginPage {
     @FindBy(id= "user-name") private WebElement userName;
     @FindBy(id= "password") private WebElement password;
     @FindBy(id= "login-button") private WebElement loginBtn;
+    @FindBy(xpath= ".//div[@class='error-message-container error']//h3") private WebElement errorMessage;
     WebDriver driver;
     public LoginPage(WebDriver driver){
       this.driver=driver;
         PageFactory.initElements(driver,this);
     }
-    public Catalog userLogin(String UserName, String Password) {
+    public void userLogin(String UserName, String Password) {
         userName.sendKeys(UserName);
         password.sendKeys(Password);
         loginBtn.click();
-        return new Catalog(driver);
     }
-
+    public String getErrorMessage(){
+        return errorMessage.getText();
+    }
+    public void loginWithoutCred(){
+        loginBtn.click();
+    }
+    public void clearText(){
+        userName.clear();
+        password.clear();
+    }
 }

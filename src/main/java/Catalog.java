@@ -6,8 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class Catalog {
-    @FindBy(id= ".//div[@class='inventory_list']//button") private List<WebElement> productBtn;
-    @FindBy(id= ".//div[@id='shopping_cart_container']/a/span") private WebElement cartCounter;
+    @FindBy(xpath= ".//div[@class='inventory_list']//button") private List<WebElement> productBtn;
+    @FindBy(xpath= ".//div[@id='shopping_cart_container']/a/span") private WebElement cartCounter;
     WebDriver driver;
     public Catalog(WebDriver driver){
         this.driver=driver;
